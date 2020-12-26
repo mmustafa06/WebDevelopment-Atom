@@ -1,0 +1,114 @@
+body{
+  font-family: sans-serif;
+}
+
+.ortak{
+  margin: 15px;
+  padding: 10px;
+  float: left;
+  border-radius: 25px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.title{
+  text-align: center;
+  padding-top: 10px;
+  font-size: 2rem;
+  color: #ffffff;
+  font-family: sans-serif;
+}
+
+.fiyat{
+  font-family: sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+.dolar{
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.vaatler{
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.order{
+  margin: 15px 20% 5px 20%;
+  padding: 10px 0;
+  border-radius: 30px;
+  background-color: #ffffff;
+  font-size: 1.2rem;
+
+}
+
+.icon1{
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #65AEEF 0%, #F539C7 100%);
+  border-radius: 50%;
+  font-size: 3.2rem;
+  color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon2{
+  width: 90px;
+  height: 90px;
+  background : linear-gradient(135deg, #F426D2 0%, #FDEE80 100%);
+  border-radius: 50%;
+  margin: 0 auto;
+  font-size: 3.2rem;
+  color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon3{
+  width: 90px;
+  height: 90px;
+  background : linear-gradient(135deg, #9455F5 0%, #38FF81 100%);
+  border-radius: 50%;
+  margin: 0 auto;
+  font-size: 3.2rem;
+  color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kutu1{
+  margin-top: 35px;
+  width: 275px;
+  height: 400px;
+  background: linear-gradient(135deg, #65AEEF 0%, #F539C7 100%);
+
+}
+
+.kutu2{
+  box-sizing: border-box;
+  padding-top: 40px;
+  width: 275px;
+  height: 440px;
+  background : linear-gradient(135deg, #F426D2 0%, #FDEE80 100%);
+}
+
+.kutu3{
+  margin-top: 35px;
+  width: 275px;
+  height: 400px;
+  background : linear-gradient(135deg, #9455F5 0%, #38FF81 100%);
+}

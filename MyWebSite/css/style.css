@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Ubuntu&display=swap');
+body{
+  margin: 0;
+  box-sizing: border-box;
+}
+p{
+  font-size:25px;
+  padding: 0 3rem 0 2rem;
+  font-family: 'Ubuntu', sans-serif;
+}
+h1{
+  font-family: 'Coiny', cursive;
+  font-weight: normal;
+  font-size:29px;
+  padding: 0 3rem 0 2rem;
+}
+h1:hover{
+  background-color: #b8de6f99;
+}
+img{
+  border-radius: 20%;
+  width: 200px;
+  height: 250px;
+}
+.container-fluid a{
+  float: right;
+  text-decoration: none;
+  padding: 2rem 1.5rem 0 0;
+  font-size: 1.5rem;
+  color: #f1f3f8;
+
+}
+.container-fluid a:hover{
+  text-decoration: underline;
+}
+.contanier{
+  margin: 50px 100px;
+}
+
+.container-fluid{
+  text-align: left;
+  padding: 10px;
+  font-size: 2rem;
+  color: #f6830f;
+  background-color: #1f3c88;
+
+  position: sticky;
+  top: 0;
+
+}
+.logo{
+  border-radius: 50%;
+  background-color: #bb220588;
+  border: 2px dashed;
+  font-variant: small-caps;
+  font-weight: normal;
+  font-family: 'Coiny', cursive;
+  padding: 0.7rem 2%;
+  font-size: 2.5rem;
+}
+.hakkimda{
+  border-radius: 20%;
+  border: 2px solid red;
+  padding: 2% 2%;
+  background-color: #fafcc2;
+}
+.profil-resmi{
+  border-radius: 50%;
+}
+
+.hobilerim{
+  border-radius: 20%;
+  border: 2px dashed blue;
+  margin: 2% 0;
+  padding: 2% 5%;
+  background-color: #f6d6ad;
+}
+.hobi-resim{
+  padding-right: 1rem;
+}
+
+.bildigim{
+  border-radius: 20%;
+  border: 2px solid red;
+  padding: 2% 5%;
+  background-color: #f9c0c0;
+}
+.beceri-resim{
+  padding: 0 1rem;
+}
+
+/*Alt kisim*/
+.alt-link{
+  text-decoration: none;
+}
+.ustegeridon:hover{
+  background-color: #ffa62b;
+  text-decoration: underline;
+}
+.ustegeridon{
+  padding: 10px;
+  background-color: #db6400;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.containerfluid-bottom{
+  display: flex;
+  background-color: #1f3c88;
+  padding-left: 150px;
+  box-sizing: border-box;
+}
+
+.menu{
+  color: #ffffff;
+  padding: 10px;
+  padding-right:200px;
+
+}
+
+.menu .baslik{
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.menu ul{
+  padding: 0;
+  color: #ffffff;
+}
+.menu ul li{
+  list-style-type: none;
+}
+
+.menu ul li a{
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+.menu ul li a:hover{
+  text-decoration-line: underline;
+}

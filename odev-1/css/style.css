@@ -1,0 +1,58 @@
+.dis{
+  background-color: #f1e189;
+}
+
+.ic-bir{
+  width: auto;
+  height:225px;
+  background-color: #f39233;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
+  padding: 2%;
+}
+.resim-1{
+  width: 150px;
+  height:150px;
+
+}
+.yazi-1{
+  padding-left: 2rem;
+}
+
+
+
+.ic-iki{
+  width: auto;
+  height:225px;
+  background-color: #01c5c4;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 2%;
+}
+.resim-2{
+  width: 150px;
+  height:150px;
+
+}
+.yazi-2{
+  padding-right: 2rem;
+}
+
+
+.ic-uc{
+  width: auto;
+  height:225px;
+  background-color: #b8de6f;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 2%;
+}
+.resim-3{
+  width: 150px;
+  height:150px;
+
+}
+.yazi-3{
+  padding-left: 2rem;
+}

@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+}
+
+
+/* section profil */
+head{
+  background-color: blue !important;
+}
+head a .navbar-brand{
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+head .nav-link{
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+.profil {
+  color: blue;
+  height: 25rem;
+  background-color: #d2f5e3;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profil_foto {
+  border-radius: 100%;
+  width: 7rem;
+  height: 7rem;
+}
+
+.profil_foto img {
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.profil_marka{
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.profil_yildiz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+
+.profil_yildiz::after {
+  content: " ";
+  background-color: blue;
+  width: 100%;
+  height: 1.5px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.profil_yildiz::before {
+  content: " ";
+  background-color: blue;
+  width: 100%;
+  height: 1.5px;
+  position: relative;
+  margin-right: 10px;
+}
+
+
+/* section portfolio */
+.portfolio{
+  color: blue;
+  height: 25rem;
+  background-color: #f4d9c6;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.portfolio_text{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.portfolio .row div{
+  width: 6rem;
+  height: 8rem;
+
+}
+.portfolio img{
+  padding: 2% 5%;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* section about */
+.about{
+  color: blue;
+  height: 25rem;
+  background-color: #d2f5e3;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.about_head{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.btn{
+  color: blue;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid blue;
+}
+.about .about_text{
+  width: 40%;
+  height: 6rem;
+}
+
+
+/* section contact */
+.contact{
+  color: blue;
+  height: 25rem;
+  background-color: #e5c5b5;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.contact{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+
+
+/* section adress */
+.adress_social{
+  color: blue;
+  height: 12rem;
+  background-color: #d2f5e3;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.adress_social h2{
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.3rem;
+}
+.adress_social p{
+  line-height: 1.5;
+}
+
+.social_media i{
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  border: 1px solid orange;
+  color: orange;
+}
+
+
+footer{
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}

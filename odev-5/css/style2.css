@@ -1,0 +1,193 @@
+* {
+  box-sizing: border-box;
+}
+html{
+  font-size: 1rem;
+}
+
+body {
+  background-color: #160c6e;
+  padding: 2%;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+a {
+  color: white;
+}
+
+/* header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.4vh;
+}
+
+header figure img {
+  width: 3.75rem;
+}
+
+.fa-search {
+  font-size: 1.3rem;
+}
+
+/* main */
+
+main {
+  height: 86vh;
+  display: flex;
+  align-items: center;
+}
+main nav{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 15%;
+  height: 18.75rem;
+  justify-content: space-evenly;
+}
+main nav h2{
+  font-size: 1.5 rem;
+  font-weight: 700;
+}
+main nav a{
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+}
+
+/* main orange */
+.main .middle{
+  flex-basis: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orange{
+  width: 37.5rem;
+  height: 37.5rem;
+  border-radius: 50%;
+  background: linear-gradient(321.25deg, #df387c -33.39%, #ff602c 103.69%);
+  z-index: 2;
+  border: 14.375rem solid rgb(47, 24, 169);
+  box-sizing: content-box;
+  position: relative;
+}
+.orange img{
+  width: 120%;
+  position: relative;
+  right: 4rem;
+}
+.middle_text {
+  width: 37rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 3;
+  bottom: 7rem;
+  left: 22rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 7.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.middle_text p {
+  width: 15rem;
+  text-align: right;
+  margin-bottom: 1.3rem;
+}
+
+.middle_text a{
+    padding: 10px 20px;
+    background-color: #FF602C;
+    border-radius: 15.56rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+/* main menu-right */
+
+main .menu_right_bosluk {
+  flex-basis: 15%;
+}
+
+
+/* footer */
+
+footer nav a{
+    margin-right: 1rem;
+}
+
+
+
+/* Media */
+
+@media (min-width: 1201px){
+  html{
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px){
+  html{
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  html{
+    font-size: 0.5rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+  html{
+    font-size: 0.4rem;
+  }
+}
+
+@media (max-width: 575px){
+  html{
+    font-size: 0.4rem;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+  .middle{
+    width: 100%;
+  }
+  .orange{
+    width: 100%;
+    border-radius: 20px;
+    border: none;
+  }
+  orange img{
+    width: 50%;
+    position: relative;
+    left: 2rem;
+  }
+  .middle_text{
+    position: static;
+    justify-content: center;
+    align-items: center;
+  }
+  h1{
+    font-size: 5rem;
+  }
+  main nav{
+    flex-direction: row;
+  }
+  main h2{
+      display: block;
+    }
+}

@@ -1,0 +1,68 @@
+.nav-radius{
+  border-radius: 1rem;
+}
+.arkaplan-gray{
+  background-color: #eaeaea;
+}
+.navbar-brand{
+  font-family: 'Ubuntu';
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+.nav-link.active{
+  font-size: 14px;
+}
+
+.bt-50px-space{
+  padding: 50px 0;
+}
+.ben{
+  margin-bottom: 10%;
+  font-family: 'Ubuntu';
+  font-size:2rem;
+  line-height:1.5;
+}
+.about{
+  background-color: #e1ffc2;
+  color: #06623b;
+}
+.linkedin{
+  background-color: #ddf3f5;
+  color: #150485;
+}
+
+@media (min-width: 992px ) {
+  .r-l-fluid-padding{
+    padding: 3% 15%;
+  }
+}
+@media (max-width: 991px ) {
+  .r-l-fluid-padding{
+    padding: 3% 3%;
+  }
+}
+@media (max-width: 767px ) {
+  .ben{
+    text-align: center;
+  }
+  .profil-img{
+    margin-top: 20%;
+    width: 80%;
+  }
+  .down-link{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* 2.kisim #ffc107*/
+
+
+
+
+
+.far{
+  color: #ffd166;
+  margin-bottom: 5%;
+  font-size: 50px;
+}

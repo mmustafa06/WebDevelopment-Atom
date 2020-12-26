@@ -1,0 +1,269 @@
+/* base */
+:root {
+  --primary: #bd5d38;
+  --secondary: #8da9bd;
+  --headers: #1c2b2d;
+  --light: #fff;
+  --header_text: #343a40;
+  --muted_text: #6c757d;
+  --primary_text: #1f6f8b;
+  --social_color: #495057;
+  --box-shadow: 4px 1px 29px -2px rgba(0, 0, 0, 0.53);
+  --font_700: 700;
+  --font_500: 500;
+  --font_400: 400;
+  --font_size_text_top: 1.5rem;
+  --family_Saira: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --family_Muli: 'Mulish', sans-serif;
+}
+
+body{
+  color: var(--muted_text);
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--family_Saira);
+  font-size: var(--font_size_text_top);
+}
+
+.h3{
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: var(--header_text) !important;
+}
+
+.h4{
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  font-size: var(--font_size_text_top) !important;
+}
+
+p{
+  font-family: var(--family_Muli);
+}
+
+.text-primary{
+  color: var(--primary) !important;
+}
+
+/* header */
+
+header {
+  background-color: white !important;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  height: 4rem;
+  -webkit-box-shadow: 1px 0px 20px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 0px 20px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 0px 20px -8px rgba(0, 0, 0, 0.75);
+}
+
+header a {
+  color: rgba(33, 40, 50, 0.5) !important;
+}
+
+.overview span {
+  font-size: 0.75rem;
+}
+
+.screen a {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 10px;
+  transition: ease background-color 0.4s;
+  border-radius: 50%;
+}
+
+.screen a:nth-child(1),
+.screen a:nth-child(2):hover,
+.screen a:nth-child(3):hover {
+  background-color: #eee;
+}
+
+.screen a:nth-child(2) {
+  margin: 0 0.5rem;
+}
+
+/* download */
+
+.download a:nth-child(2) {
+  color: #dc392d !important;
+  padding: 0.5rem 0.75rem;
+  background-color: #f0e3e7;
+  border-color: #f0e3e7;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  margin: 1rem;
+}
+
+.fa-tablet-alt {
+  font-weight: light;
+}
+
+.download a:nth-child(3):hover header {
+  display: none;
+}
+
+/* aside */
+
+aside {
+  width: 17rem;
+  box-shadow: var(--box-shadow);
+  top: 4rem
+}
+
+.navbar {
+  background-color: var(--primary);
+  height: 100vh;
+
+
+}
+
+.navbar-brand {
+  margin-right: 0 !important;
+}
+
+.navbar-brand img {
+  max-width: 10rem;
+  max-height: 10rem;
+  border-radius: 50%;
+  border: 0.5rem solid rgba(255, 255, 255, 0.2);
+}
+
+.nav_outside {
+  height: 70%;
+}
+
+.collapse ul{
+  line-height: normal;
+}
+
+.nav-link {
+  font-weight: var(--font_700);
+}
+
+
+
+/* Article */
+
+/* about-section */
+
+article{
+  margin-top: 2rem;
+  margin-left: 18rem;
+  height: 100vh;
+  padding: 0 4rem;
+}
+
+.about{
+  padding: 10rem 0;
+}
+
+.about h2 a{
+  color: var(--primary);
+  text-decoration: none;
+  background-color: transparent;
+}
+.about h2 a:hover{
+  color: #824027;
+  text-decoration: underline !important;
+}
+
+.about h1{
+  text-transform: uppercase;
+  font-size: 6rem;
+  color: var(--header_text);
+  font-weight: bold;
+}
+.about span{
+  color: var(--primary);
+}
+
+article section .about h2{
+  text-transform: uppercase;
+  font-weight: var(--font500);
+  font-size: var(--font_size_text_top);
+}
+
+.text_top{
+  padding: 3rem 0;
+  font-size: 1.15rem;
+  font-weight: var(--font_400);
+}
+
+.about div i{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  color: var(--light);
+  background-color: var(--social_color);
+  border-radius: 100%;
+  font-size: var(--font_size_text_top);
+  margin-right: 1.5rem;
+}
+
+.about div i:hover{
+  transition: ease background-color 0.4s;
+  background-color: var(--primary);
+}
+
+
+/* Experience */
+
+.experience h2{
+  margin-bottom: 0.5rem;
+  padding-top: 3.8rem;
+  font-weight: 700;
+  color: var(--header_text);
+  font-size: 3.5rem;
+}
+
+.experience h3{
+  margin-top: 3rem;
+}
+
+
+/* Education */
+
+.education_head{
+  color: var(--header_text) !important;
+  font-weight: 700 !important;
+  font-size: 3.5rem !important;
+  margin-bottom: 3rem;
+  margin-top: 6.625rem;
+}
+
+
+/* Interest */
+
+.interest_head{
+  color: var(--header_text) !important;
+  font-weight: 700 !important;
+  font-size: 3.5rem !important;
+  margin-bottom: 3rem;
+  margin-top: 14.375rem;
+}
+
+
+/* Awards */
+
+.awards_head{
+  color: var(--header_text) !important;
+  font-weight: 700 !important;
+  font-size: 3.5rem !important;
+  margin-bottom: 3rem;
+  margin-top: 11.875rem;
+}
+
+
+.aside_height{
+  top: 0 !important;
+}

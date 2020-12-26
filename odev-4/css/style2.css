@@ -1,0 +1,64 @@
+/* genel */
+body {
+  background-color: #fad961;
+  background-image: url(/img/speaker.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  height: 100vh;
+  padding: 15px;
+}
+
+/* header */
+header {
+  padding: 5px 30px 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.dropdown-menu {
+  min-width: 0;
+  width: 140px;
+}
+
+.dropdown-menu a {
+  margin: 0;
+  padding: 0.5rem 0.2rem;
+  width: 30px;
+}
+
+.dropdown-menu span {
+  padding-left: 4px;
+}
+
+/* main */
+main .main_top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 10rem;
+}
+.main_top span{
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.main_top h1{
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.price span{
+  padding: 10px 12px;
+}
+.price_outside {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 15px;
+}

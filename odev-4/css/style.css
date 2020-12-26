@@ -1,0 +1,57 @@
+body{
+  background-color: orange;
+	background-image: image("speaker.png");
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.profil{
+  border: 1px solid #fff;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.crow-found{
+  font-size: 2.3rem;
+  font-weight: 700;
+}
+.bluetooth-speaker .row{
+  margin-top: 1%;
+  margin-left: 23%;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 1.5rem;
+}
+.row .col-4{
+  padding: 3% 2%;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.row .col-8{
+  padding: 3% 2%;
+  border: 1px solid #000;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.bluetooth-speaker{
+  margin-top: 6%;
+}
+.bluetooth-speaker .text-center{
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding-bottom: 4%;
+
+}
+.bluetooth-speaker .blu-spkr{
+  font-size: 2.6rem;
+  font-weight: 900;
+}
+.information{
+	margin: 7% 11%;
+}
+footer section{
+	padding: 0 1%;
+}
