@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myInput App</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
         .dark-mode {
             background-color: black !important;
@@ -16,9 +18,8 @@
         .stickyNote{
             display: flex;
             flex-wrap: wrap;
-            width: 1000px;  /* WRAP YAPIP GENISLIK VERDIM AMA YORUM GIRDIKCE GENISLIK UZAMAYA DEVAM EDIYOR!! */
-            height: 1000px;
-            
+            width: 100%;  /* WRAP YAPIP GENISLIK VERDIM AMA YORUM GIRDIKCE GENISLIK UZAMAYA DEVAM EDIYOR!! */
+            justify-content: center;
         }
     </style>
 </head>
@@ -30,7 +31,7 @@
     <div id="form">
 
         <label for="">Notunuzu girebilirsiniz</label>
-        <textarea id="note_text" name="w3review" rows="4" cols="101" value=""></textarea>
+        <textarea id="note_text" name="w3review" rows="4" cols="99" value=""></textarea>
         <button id="note_enter" type="submit" value="Submit">Submit</button>
 
     </div>
@@ -51,6 +52,7 @@
     var stickyNote = document.getElementById("stickyNote");
 
     document.body.style.backgroundColor = "#f5f4f4";
+    document.body.style.fontFamily = "'Roboto', sans-serif";
 
     note_text.style.backgroundImage = "linear-gradient(135deg, rgba(255,165,0,0.8), rgba(255,165,0,0.3))";
     note_text.style.color = "#000";
@@ -73,7 +75,8 @@
         document.body.classList.toggle("dark-mode");
     }
 
-    stickyNote.style.display = "flex";
+    //stickyNote.style.display = "flex";
+    stickyNote.classList.add("stickyNote");
 
     submit.addEventListener("click", atama);
 
@@ -83,7 +86,7 @@
         var bgColor = random_bg_color();
 
         stickyNote.innerHTML +=`
-        <h3 style= "background-color:${bgColor}; color:#fff; text-align: center; width:15rem; word-wrap:break-word; border:1px solid #000000; padding: 1rem; margin:1rem;">${x}</h3>
+        <h3 style= "background-color:${bgColor}; font-family: 'Indie Flower', cursive; font-weight:300; color:#fff; text-align: center; width:14rem; word-wrap:break-word; border:1px solid #000000; padding: 1rem; margin:1rem;">${x}</h3>
     `;
     }
 
