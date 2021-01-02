@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="">
+
+    <%- include("header") -%>
+
+    <% for(let i = 0; i < kitaplar.length; i++){ %>
+
+        <h1>Anasayfa</h1>
+        <p>Kitap ismi : <%= kitaplar[i].kitapismi %> </p>
+        <p>Kitap fiyatı : <%= kitaplar[i].fiyat %> </p>
+        <p>Ürün sayfasına gitmek için <a href="/kitap/<%= kitaplar[i].kitapismi %>/<%= kitaplar[i].index %>">tıklayınız</a>.
+        </p>
+        <br />
+
+  <%  } %>
+
+    
+  
+
+    <%- include("footer") -%>
+
+</body>
+
+</html>

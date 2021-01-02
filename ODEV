@@ -5,7 +5,7 @@ Sitede olması gerekenler : Not girebileceği bir input.
 						   Notu ekleyebileceği bir buton.
 						   Eklenen notların listesinin yer aldığı bir bölüm.
 						   DarkMode-LightMode butonu olacak.
-						   Tüm herşey javascript ile yapılacak.
+		  				   Tüm herşey javascript ile yapılacak.
 						        //input ekleme
 							    // ben hamza
 							    //buton ekleme
