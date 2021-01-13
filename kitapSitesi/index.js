@@ -1,65 +1,174 @@
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, __dirname + '/dosyalar/resimler')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.jpg')
+  }
+});
+
+var upload = multer({ storage: storage });
+
+
+const mysql = require("mysql");
+const bodyParser = require("body-parser");
 const express = require("express");
 const app     = express();
+app.use(bodyParser.urlencoded( {extended: true} ));
 app.set("view engine" , "ejs");
 app.use(express.static(__dirname + "/dosyalar"));
+app.use(bodyParser.json());
 
 
 
-// resimLinki : "/resimler/sefiller.jpg"
-// yayınevi   :  "Papatya"
-// aciklama   :  "240 kelimelik açıklama"
-// yazar      : "Victor Hugo"
-// özellikleri her bir kitap için eklenecek ve kitap.ejs dosyasında bu veriler ekrana yazdırılacak.
-var ucTaneKitap = [
-  {
-    kitapismi : "Sefiller" ,
-    fiyat: 20 ,
-    index : 0  ,
-    resimlinki :  "/resimler/sefiller.jpg",
-    yayinevi : "Papatya",
-    aciklama : "İlk olarak 1862'de yayınlandı. 19. yüzyılın en büyük eserlerinden biri olarak kabul gördü. Hikâye 1815'te başlar ve 1832'deki Paris Haziran Ayaklanması'nda son bulur. Birkaç karakterin yaşamını ve birbirleriyle alakasını ele alan roman daha çok eski mahkûm Jean Valjean'ın yaşam mücadelesi ve kefaretini ödemeye çalışmasına odaklanır.Yasa ve merhametin doğasının incelendiği roman ayrıca Fransa tarihi, Paris'in mimarisi ve kentsel tasarımı, siyaset, ahlak felsefesi, antimonarşizm, adalet, din, ailevi ve romantik sevginin türleri ve doğası gibi konuları özenle ele alır.",
-    yazar : "Victor Hugo"
-  },
-  {
-    kitapismi : "Suç ve Ceza" ,
-    fiyat: 50,
-    index : 1,
-    resimlinki :  "/resimler/sucveceza.jpg",
-    yayinevi : "Karbon",
-    aciklama : "Dostoyevski (1821-1881): Gerek 1840 ortalarından itibaren yayımlamaya başladığı Beyaz Geceler ve Öteki gibi uzun öykü-kısa romanlarıyla, gerekse ilkini elinizde tuttuğunuz Suç ve Ceza, Budala ve Karamazov Kardeşler gibi Sibirya sürgünü sonrası büyük romanlarıyla Dostoyevski, insanın karanlık yakasını kendinden sonraki bütün romancıları derinden etkileyecek biçimde dile getirmiş büyük bir 19. yüzyıl ustasıdır. Mazlum Beyhan (1944); Yayımlamış olduğu Dostoyevski'den Suç ve Ceza ve Budala, Tolstoy'dan Çocukluğum, İlkgençliğim, Gençliğim ve Gogol'dan Arabeskler benzeri çalışmalar düşünüldüğünde, Beyhan, hiç tartışmasız son 35 yılın en önemli Rus edebiyatı çevirmenlerinden biridir.",
-    yazar : "Dostoyevski"
-  },
-  {
-    kitapismi : "Tehlikeli Oyunlar" ,
-    fiyat: 30,
-    index: 2
+
+var connection = mysql.createConnection({
+  multipleStatements : true,
+  host     : 'localhost',
+  user     : 'root',
+  password : '12344321',
+  database : 'bilgiler'
+});
+
+
+connection.connect(function(err){
+  if(err) throw err;
+  console.log("MYSQL'e bağlandı..");
+});
+
+
+var kategoriler = [] ;
+// ya bir kere alsak, bir daha bu fonksyion çağrıldığında, direk daha önceki aldığımızı kullansak ?
+function kategorileriAl(callback){
+  if(kategoriler.length > 0 ){
+    console.log("var olan dönderildi.");
+    callback(kategoriler);
+  }else{
+    connection.query("SELECT * from kategoriler", function(err, results, fields){
+      kategoriler = results;
+      console.log("veri tabaından alındı.");
+      return callback(kategoriler);
+    });
   }
-];
-
-
+}
 app.get("/" , function(req , res){
-    res.render("anasayfa" , { kitaplar : ucTaneKitap } );
+    connection.query("SELECT * from kitaplar  ;  SELECT * from kategoriler" , function(err, results, fields){
+      if(err) throw err;
+      // birinci sonuçta -> kitaplar        > results[0]
+      // ikinci sonuçta  -> kategoriler     > results[1]
+      var veriTabaniKitaplar    = results[0];
+      var veriTabaniKategoriler = results[1];
+      console.log(veriTabaniKitaplar);
+      res.render("anasayfa" , {
+                                  kitaplar :  veriTabaniKitaplar  ,
+                                  kategoriler : veriTabaniKategoriler}
+                );
+    });
+});
+// kitapsitesi.com/kitap/TehlikeliOyunlar/78
+app.get("/kitap/:isim/:id", function(req, res){
+
+  var idDegeri = req.params.id; // -> 78
+  var sql = "SELECT * from kitaplar WHERE id = " + idDegeri;
+
+  kategorileriAl(function(gelenKategoriler){
+
+    connection.query(sql, function(err, results, fields){
+        if(err) throw err;
+        console.log(results);
+        var kitapYazar      = results[0].yazar;
+        var kitapAciklama   = results[0].aciklama;
+        var kitapResim      = results[0].resimlinki;
+        var kitapYayinEvi   = results[0].yayinevi;
+        var kitapIsmi       = results[0].kitapismi;
+        var kitapFiyati     = results[0].fiyat;
+        var kitapKategori   = results[0].kategori;
+        res.render("kitap" , { yazar : kitapYazar,
+                               aciklama: kitapAciklama,
+                               resim : kitapResim,
+                               yayinevi : kitapYayinEvi,
+                               isim : kitapIsmi ,
+                               fiyat : kitapFiyati,
+                               kategori : kitapKategori,
+                               kategoriler : gelenKategoriler,
+                               kitaplar : []
+                             });
+    });
+  });
+});
+/// kitapsitesi.com/kategori/roman
+/// kitapsitesi.com/kategori/edebiyat
+/// veritabanına bakacağız ve şunu sorgulayacağız.
+/// kategorisi roman olan tüm kitapları getir.
+/// kategorisi edebiyat olan tüm kitapları getir.
+/*
+SELECT *  FROM bilgiler.kitaplar
+LEFT JOIN bilgiler.kategoriler
+ON bilgiler.kategoriler.kategori_link = 'bilim'
+WHERE bilgiler.kategoriler.kategori_ismi = bilgiler.kitaplar.kategori
+*/
+app.get("/kategori/:kategorilink", function(req, res){
+    kategorileriAl(function(gelenKategoriler){
+      // kategoriler geldi...
+        var kategoriLink = req.params.kategorilink; // edebiyat
+        var sql = "SELECT bilgiler.kitaplar.* FROM bilgiler.kitaplar LEFT JOIN bilgiler.kategoriler ON bilgiler.kategoriler.kategori_link = '"+ kategoriLink +"' WHERE bilgiler.kategoriler.kategori_ismi = bilgiler.kitaplar.kategori"
+        connection.query(sql , function(err , results, fields){
+            res.render("kategori", {kitaplar : results , kategoriler : gelenKategoriler} );
+        });
+    });
+});
+app.get("/arama" , function(req, res){
+    // veritabanına bağlanacağız, orada bu kelimeye ait
+    // kitap varsa, onları kullanıcıya göstereceğiz.
+    var kelime = req.query.kitap;
+    // veritabanı bağlantısı oluşturalım. kullanıcın aradığı kelimeyi veritabanına soralım,
+    // bulduğumuz sonuçları ekrana yazdıralım.
+    var sql = "SELECT * from kitaplar WHERE kitapismi LIKE '%" + kelime + "%'   ;  SELECT * from kategoriler ";
+    connection.query(sql,  function(err, results, fields){
+      var bulunanKitaplar = results[0];
+      var bulunanKategoriler = results[1];
+      res.render("arama" , { kitaplar : bulunanKitaplar , kategoriler : bulunanKategoriler });
+    });
 });
 
 
-app.get("/kitap/:isim/:index", function(req, res){
-    var indexDegeri = req.params.index;
-    var kitapIsmi = ucTaneKitap[indexDegeri].kitapismi;
-    var kitapFiyati = ucTaneKitap[indexDegeri].fiyat;
-    var kitapYayinEvi = ucTaneKitap[indexDegeri].yayinevi;
-    var kitapResim    = ucTaneKitap[indexDegeri].resimlinki;
-    var kitapAciklama = ucTaneKitap[indexDegeri].aciklama;
-    var kitapYazar = ucTaneKitap[indexDegeri].yazar;
-    res.render("kitap" , { yazar : kitapYazar,
-                           aciklama: kitapAciklama,
-                           resim : kitapResim,
-                           yayinevi : kitapYayinEvi,
-                           isim : kitapIsmi ,
-                           fiyat : kitapFiyati,
-                           kitaplar: ucTaneKitap
-                         });
+app.get("/kitapekle", function(req, res){
+  res.sendFile(__dirname + "/views/kitapekle.html");
+});
+
+app.post("/veritabanina-ekle"   ,  upload.single('dosya')  ,  function(req, res){
+  
+  var resimlinki = "";
+  
+  if(req.file){
+    resimlinki = "/resimler/"+req.file.filename;
+  }
+
+  var kitapismi = req.body.kitapismi;
+  var yazar     = req.body.yazar;
+  var fiyat     = req.body.fiyat;
+  var kategori  = req.body.kategori;
+  var yayinevi  = req.body.yayinevi;
+  var aciklama  = req.body.aciklama;
+
+  console.log(req.body);
+  console.log(req.body.kitapismi);
+  // veritabanına ekleme işlemi yapacağız.
+  //kitapismi, fiyat, resimlinki, yayinevi, aciklama, yazar, kategori
+  var sql = "INSERT INTO bilgiler.kitaplar (kitapismi, fiyat, resimlinki, yayinevi, aciklama, yazar, kategori) VALUES('"+kitapismi+"','"+ fiyat+"', '"+resimlinki+"' ,'"+ yayinevi + "','" + aciklama +"','"+ yazar +"','"+ kategori+"')";
+  connection.query(sql, function(err, results, fields){
+    res.redirect("/kitapekle");
+    
+  });
 });
 
 
-
-app.listen(8000);
+let port = process.env.PORT;
+if(port == "" || port == null){
+  port = 5000;
+}
+app.listen(port, function(){
+  console.log("port : " + port);
+});

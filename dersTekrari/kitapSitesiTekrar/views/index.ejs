@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <%- include("header") %> 
+
+    <h1> Anasayfa </h1>
+    
+    <% for(let i=0; i<books.length; i++){ %>
+        
+        <p>Kitap ismi : <%= books[i].kitapismi %> </p>
+        <p>Kitap fiyatı : <%= books[i].fiyat %> </p>
+        <p>Urun sayfasina gitmek icin <a href="/books/<%= books[i].kitapismi %>/<%= books[i].id %> ">tiklayiniz</a></p>   
+        <br>
+
+   <% }  %> 
+   
+   <%- include("footer") %> 
+
+</body>
+</html>
