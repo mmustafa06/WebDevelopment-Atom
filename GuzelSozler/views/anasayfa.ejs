@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guzel Sozler</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+
+    <div class="container p-5">
+
+        <% for( let i = 0; i < sozler.length; i++ ) { %>
+            
+            <div class="alert alert-warning" role="alert">
+                <%= sozler[i].kategori %> - <%= sozler[i].icerik %> 
+            </div>
+        <% } %>
+
+    </div>
+    
+</body>
+</html>

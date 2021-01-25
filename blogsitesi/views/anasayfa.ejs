@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.Mustafa Odabasi - Blog Sitesi</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -18,59 +22,39 @@
 
             <div class="col-lg-8 col-md-9 col-sm-12">
 
-                <h2>Techproed Web Developer Kursu</h2>
+               <% for( let i = 0; i < makaleler.length; i++ ) { %>
+
+                <h2><%= makaleler[i].baslik %> </h2>
+
                 <div class="row">
 
                     <div class="col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center align-items-center">
                         <img width="100%" height="auto"
-                            src="https://d1hzl1rkxaqvcd.cloudfront.net/contest_entries/2187411/_600px/75e72331355f87de84bc85bc6578b3cb.jpg"
+                            src="<%= makaleler[i].resim %> "
                             alt="">
                     </div>
                     <div class="col-lg-9 col-md-9 col-sm-12">
-                        <p>Full Stack Java Program
-                            Full stack developer is a dream for many aspiring coders. You will have comprehensive and
-                            advanced list of skills, highly paid jobs and become a master of web development. The full
-                            stack developers are in high demand, and if you are one of those who are looking for a
-                            career as a full stack developer then now is the time</p>
+                        <p><%= makaleler[i].aciklama %> </p>
                     </div>
 
-                </div>
-
-                <h2>Techproed Web Developer Kursu</h2>
-                <div class="row">
-
-                    <div class="col-lg-3 col-md-3 col-sm-12 d-flex justify-content-center align-items-center">
-                        <img width="100%" height="auto"
-                            src="https://d1hzl1rkxaqvcd.cloudfront.net/contest_entries/2187411/_600px/75e72331355f87de84bc85bc6578b3cb.jpg"
-                            alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9 col-sm-12">
-                        <p>Full Stack Java Program
-                            Full stack developer is a dream for many aspiring coders. You will have comprehensive and
-                            advanced list of skills, highly paid jobs and become a master of web development. The full
-                            stack developers are in high demand, and if you are one of those who are looking for a
-                            career as a full stack developer then now is the time</p>
-                    </div>
-
-                </div>
+                </div>       
+               <% } %> 
 
             </div>
 
             <div class="col-lg-4 col-md-3 col-sm-12">
                 <ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Cras justo odio
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Dapibus ac facilisis in
-    <span class="badge bg-primary rounded-pill">2</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Morbi leo risus
-    <span class="badge bg-primary rounded-pill">1</span>
-  </li>
-</ul>
+
+                    <% for( let i = 0; i < cokOkunanlar.length; i++ ) { %>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <%= cokOkunanlar[i].baslik %> 
+                            <span class="badge bg-primary rounded-pill"><%= cokOkunanlar[i].okunmasayisi %></span>
+                          </li>
+                    
+                    <% } %>
+
+                </ul>
             </div>
 
         </div>

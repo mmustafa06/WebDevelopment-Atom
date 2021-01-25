@@ -22,39 +22,80 @@ connection.connect((err) => {
 
   console.log("sql baglandi");
 });
- 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-  if (error) throw error;
-  console.log('The solution is: ', results[0].solution);
-});
 
-/*
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, '/dosyalar/resimler')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now())
-    }
-  });
-   
-  var upload = multer({ storage: storage })
+
+let kategoriler = [];
+let cokokunanlar = [];
+let makaleler = [];
 
  
-app.post('/profile', upload.none(), function (req, res, next) {
-  // req.body contains the text fields
-});
+function getKategoriler(callback) {
 
-*/
+  if( kategoriler.length > 0){
+    callback(kategoriler);
+  }else{
+    connection.query('SELECT * FROM kategoriler', function (error, results, fields) {
+      if (error) throw error;
+
+      kategoriler = results;
+      callback(results);
+    });
+  }
+
+  
+}
+
+
+function cokOkunanlar(callback) {
+
+  if (cokokunanlar.length > 0) {
+    callback(cokokunanlar);
+  } else{
+    connection.query('SELECT * FROM makaleler ORDER BY okunmasayisi', function (error, results, fields) {
+      if (error) throw error;
+      
+      cokokunanlar = results;
+      callback(results);
+    });
+  }
+}
+
+
+function getMakaleler(callback) {
+
+  if (makaleler.length > 0) {
+    callback(makaleler);
+  } else{
+    connection.query('SELECT * FROM makaleler', function (error, results, fields) {
+      if (error) throw error;
+      
+      makaleler = results;
+      callback(results);
+    });
+  }
+}
+
 
 app.get("/", function (req, res) {
-  
-  res.render("anasayfa");
 
+  getMakaleler( function (gelenMakaleler) {
+    cokOkunanlar( function (gelenCokOkunanlar) {
+      getKategoriler( function (gelenKategoriler) {
+
+        res.render("anasayfa", {kategoriler : gelenKategoriler,
+                                cokOkunanlar : gelenCokOkunanlar,
+                                makaleler : gelenMakaleler});
+      });
+    });
+  });
+  
 });
 
 
+app.get("/makaleekle", function (req, res) {
 
+  res.sendFile(__dirname + "/views/makaleekle.html");
+});
 
 
 
