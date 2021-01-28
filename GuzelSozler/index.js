@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const https = require('https');
+const { query } = require('express');
+
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + "/public"));
 
@@ -45,7 +48,7 @@ app.route("/api/guzelsoz/:id")
 
         GuzelSoz.updateOne({_id : req.params.id}, {kategori : gelenKategori, icerik : gelenIcerik}, {overwrite: true}, function (err) {
             if(!err){
-                res.send("Basariyla degistirildi");
+                res.send( {sonuc: "Basariyla degistirildi"} );
             } else{
                 res.send(err);
             }
@@ -54,20 +57,28 @@ app.route("/api/guzelsoz/:id")
     .patch(function (req, res) {
         GuzelSoz.updateOne({_id : req.params.id}, {$set : req.body}, function (err) {
             if(!err){
-                res.send("Basariyla guncellendi");
+                res.send( {sonuc: "Basariyla guncellendi"} );
             } else{
                 res.send(err);
             }
         })
     })
     .delete(function (req, res) {
-        GuzelSoz.deleteOne({_id : req.params.id}, function (err) {
-            if(!err){
-                res.send("Basariyla silindi");
-            } else{
-                res.send(err);
-            }
-        })
+
+        let sifre = req.body.sifre;
+
+        if (sifre == "parola1234") {
+            GuzelSoz.deleteOne({_id : req.params.id}, function (err) {
+                if(!err){
+                    res.send( {sonuc: "Basariyla silindi"} );
+                } else{
+                    res.send(err);
+                }
+            })  
+        } else{
+            res.send( {sonuc: "Sifre hatali"} );
+        }
+        
     });
 
 
@@ -89,20 +100,28 @@ app.route("/api/guzelsozler")
           });
           guzelSoz.save((err) => {
               if(!err) {
-                res.send("Basariyla olusturuldu");  
+                res.send( {sonuc: "Basariyla olusturuldu"} );  
               } else{
                   res.send(err);
               }           
           }) 
     })
     .delete(function (req, res) {
-        GuzelSoz.deleteMany({}, function (err) {
-            if (!err) {
-                res.send("Tum kayitlar basariyla silindi");
-            } else{
-                res.send(err);
-            }
-        })
+
+        let sifre = req.body.sifre;
+
+        if (sifre == "parola1234") {
+            GuzelSoz.deleteMany({}, function (err) {
+                if (!err) {
+                    res.send( {sonuc: "Tum kayitlar basariyla silindi"} );
+                } else{
+                    res.send(err);
+                }
+            })
+        } else{
+            res.send( {sonuc: "Sifre hatali"} );
+        }
+        
     });
 
 
@@ -116,11 +135,52 @@ app.get("/", function (req, res) {
 });
 
 
+app.get("/admin", function (req, res) {
 
+    let link = "https://mustafaguzelsozler.herokuapp.com/api/guzelsozler";
 
-
-
-
-app.listen(5000, () => {
-    console.log("5000 portuna baglandik")
+    https.get(link, function (response) {
+        
+        response.on("data", function (gelenGuzelSozler) {
+            //gelenGuzelSozler sifreli geldi ve biz json'a cevirdik
+            let guzelSozler = JSON.parse(gelenGuzelSozler);
+            res.render("admin", {sozler: guzelSozler})
+        })
+    })
 })
+
+
+app.post("/kayitsil", function (req, res) {
+
+    let id = req.body._id;
+    
+    let link = "https://mustafaguzelsozler.herokuapp.com/api/guzelsozler/"+id;
+
+    let gonderilecekler = query.stringify({
+        sifre: "parola1234"
+    })
+
+    let secenek = {
+        method: 'DELETE'
+    }
+    https.get(link, secenek, function (response) {
+        response.on("data", function (gelenData) {
+           let sonuc = gelenData.toString('utf8');
+            console.log(sonuc);
+            res.redirect("/admin")
+           
+        })
+    })
+})
+
+
+
+
+let port = process.env.PORT;
+if (port == "" || port == null) {
+    port = 5000;
+}
+
+app.listen(port, function () {
+    console.log("port numarasi: " + port);
+});

@@ -6,18 +6,34 @@
     <title>Guzel Sozler</title>
     <link rel="stylesheet" href="css/bootstrap.css">
 </head>
-<body>
+<body class="bg-light">
 
-    <div class="container p-5">
+    <div class="container pl-5 pr-5">
+
+        <h3 class="text-center p-5">Guzel Sozler</h3>
 
         <% for( let i = 0; i < sozler.length; i++ ) { %>
             
-            <div class="alert alert-warning" role="alert">
+            <div id="yazi" class="alert" role="alert">
                 <%= sozler[i].kategori %> - <%= sozler[i].icerik %> 
             </div>
         <% } %>
 
     </div>
-    
+
+    <script>
+        let bgColor = get_random_color();
+        document.getElementById("yazi").style.backgroundColor = bgColor;
+        
+        function get_random_color() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.round(Math.random() * 15)];
+            }
+            return color;
+} 
+
+    </script>
 </body>
 </html>
